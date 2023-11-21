@@ -1,0 +1,107 @@
+.contenedor-registro {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 3rem;
+  width: 100%;
+  margin-bottom: 3rem;
+}
+
+.contenedor-registro .anuncio span {
+  font-size: 3rem;
+  color: var(--black);
+  font-weight: 700;
+} 
+
+.contenedor-registro .anuncio p {
+  margin-top: 1rem;
+  font-size: 1rem;
+  text-align: center;
+}
+
+.contenedor-formulario {
+  display: flex;
+  gap: 2rem;
+  margin-top: 3rem;
+  width: 80%;
+  justify-content: center;
+}
+
+.contenedor-formulario .beneficios,
+.contenedor-formulario .formulario {
+  width: 50%;
+}
+
+.contenedor-formulario .beneficios h2 {
+  color: var(--black);
+  margin-bottom: 2rem;
+  font-size: 1.8rem;
+}
+
+.contenedor-formulario .beneficios ul {
+  padding: 0;
+}
+
+.contenedor-formulario .beneficios ul li {
+  margin-bottom: 1rem;
+}
+
+.contenedor-formulario .formulario h1 {
+  font-size: 1.8rem;
+  color: var(--black);
+  margin-bottom: 1.5rem;
+}
+
+.contenedor-formulario .formulario .campo {
+  display: flex;
+  flex-direction: column;
+  gap: .5rem;
+  margin-bottom: 1rem;
+}
+
+.contenedor-formulario .formulario .texto-error {
+  color: #b12525;
+  margin-bottom: 1rem;
+}
+
+.contenedor-formulario .formulario .campo input {
+  padding: .5rem 1rem;
+  outline: none;
+  border-radius: .2rem;
+  border: 1px solid #333;
+}
+
+.contenedor-formulario .formulario .btn-registrar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.contenedor-formulario .formulario .btn-registrar button {
+  padding: .5rem;
+  width: 50%;
+  font-weight: bold;
+  background-color: #333;
+  outline: none;
+  border: 1px solid #333;
+  cursor: pointer;
+  color: #fff;
+  letter-spacing: .1rem;
+  border-radius: .2rem;
+  transition: background-color 1s ease-in-out;
+}
+
+.contenedor-formulario .formulario .btn-registrar button:hover{
+  background-color: #444;
+}
+
+.contenedor-formulario .formulario .iniciar-sesion-link {
+  text-align: center;
+  color: var(--black);
+}
+
+.contenedor-formulario .formulario .iniciar-sesion-link .link{
+  color: var(--primary);
+}

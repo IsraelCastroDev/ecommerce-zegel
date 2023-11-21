@@ -1,3 +1,55 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+:root {
+  --primary: #1F618D;
+  --black: #292929;
+}
+
+*::after,
+*::before,
+* {
+  margin: 0;
+  box-sizing: border-box;
+  font-size: 16px;
+}
+
+body {
+  font-family: "Roboto", sans-serif;
+}
+
+a {
+  text-decoration: none;
+}
+
+.nav {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  background-color: var(--primary);
+}
+
+.nav .seccion-inicio {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.nav .buscador {
+  display: flex;
+  align-items: center;
+  border: 1px solid #9e9e9e;
+  border-radius: .3rem;
+  padding: 0 1rem;
+  width: 30rem;
+  background-color: #F4F6F7;
+}
+
+.nav .buscador input {
+  padding: 1rem 1rem 1rem 0;
+  border-radius: .4rem;
+  outline: none;
+  outline: none;
+  border: none;
+  width: 100%;
+  background-color: transparent;
+}
