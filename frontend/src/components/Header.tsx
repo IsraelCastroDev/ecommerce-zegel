@@ -6,7 +6,7 @@ const Header = () => {
   return (
     <nav className="nav">
       <div className="logo">
-        <Link to="/">logo</Link>
+        <Link to="/" className="link-logo">logo</Link>
       </div>
       <div className="buscador">
         <input type="text" placeholder="Buscar en Zegel Secrets" />
@@ -14,10 +14,18 @@ const Header = () => {
       </div>
       <div className="seccion-inicio">
         <div className="login">
-          <Link to="login">Inicia Sesión</Link>
+          <Link to="login" className="nav-link">
+            Inicia Sesión
+          </Link>
+          <p>o</p>
+          <Link to="registro" className="nav-link">
+            Regístrate
+          </Link>
         </div>
         <div className="carrito">
-          <Carrito />
+          <Link to="carrito">
+            <Carrito />
+          </Link>
         </div>
       </div>
     </nav>

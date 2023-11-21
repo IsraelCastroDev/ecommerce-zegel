@@ -19,6 +19,21 @@ a {
   text-decoration: none;
 }
 
+img {
+  display: block;
+}
+
+.contenedor-principal {
+  margin-top: 90px;
+}
+
+.inicio {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
 .nav {
   display: flex;
   width: 100%;
@@ -26,6 +41,12 @@ a {
   align-items: center;
   padding: 1rem 2rem;
   background-color: var(--primary);
+  position: fixed;
+  top: 0;
+}
+
+.nav .logo .link-logo {
+  color: #F4F6F7;
 }
 
 .nav .seccion-inicio {
@@ -33,6 +54,17 @@ a {
   align-items: center;
   gap: 2rem;
 }
+
+.nav .seccion-inicio .login {
+  display: flex;
+  gap: .6rem;
+  color: #F4F6F7;
+}
+
+.nav .seccion-inicio .login .nav-link {
+  color: #F4F6F7;
+}
+
 
 .nav .buscador {
   display: flex;
