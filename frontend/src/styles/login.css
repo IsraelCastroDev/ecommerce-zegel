@@ -1,0 +1,18 @@
+.contenedor-login {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 80vh;
+}
+
+.contenedor-login .contenedor-formulario .formulario h1 {
+  text-align: center;
+}
+
+.contenedor-login .contenedor-formulario {
+  width: 50%;
+}
+
+.contenedor-login .contenedor-formulario .formulario form .campo {
+  width:auto;
+}
