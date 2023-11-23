@@ -4,7 +4,7 @@ import { useMutation } from "@tanstack/react-query";
 import { useState } from "react";
 import { toast } from "react-hot-toast";
 import { useAuthStore } from "../store/auth";
-import "../styles/registro.css";
+import "../styles/login.css";
 
 const Login = () => {
   const navigate = useNavigate();
