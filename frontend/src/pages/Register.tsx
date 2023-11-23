@@ -1,7 +1,7 @@
 import { Link, useNavigate, Navigate } from "react-router-dom";
 import { registerRequest } from "../api/users";
 import { useMutation } from "@tanstack/react-query";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { toast } from "react-hot-toast";
 import { useAuthStore } from "../store/auth";
 import "../styles/registro.css";
@@ -15,6 +15,19 @@ const Register = () => {
   const [lastName, setLastName] = useState("");
   const [password, setPassword] = useState("");
   const [rePassword, setRePassword] = useState("");
+
+  const [emailError, setEmailError] = useState("");
+
+  const regexEmail =
+    /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+
+  useEffect(() => {
+    if (email && !regexEmail.test(email)) {
+      setEmailError("Ingresa un email válido");
+    } else {
+      setEmailError("");
+    }
+  }, [email]);
 
   const registerMutation = useMutation({
     mutationFn: () => registerRequest(email, name, lastName, password),
@@ -81,6 +94,7 @@ const Register = () => {
                 placeholder="ej. correo@correo.com"
               />
             </div>
+            {emailError && <p className="texto-error">{emailError}</p>}
             <div className="campo">
               <label htmlFor="name" className="">
                 Nombre
