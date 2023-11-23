@@ -8,3 +8,8 @@ export const registerRequest = async (
 ) => {
   await axi.post("usuarios/registrar/", { email, name, last_name, password });
 };
+
+export const loginRequest = async (email: string, password: string) => {
+  const response = await axi.post("usuarios/login/", { email, password });
+  return response;
+};

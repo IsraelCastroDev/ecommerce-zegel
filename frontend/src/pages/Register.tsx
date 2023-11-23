@@ -145,7 +145,11 @@ const Register = () => {
                 className=""
               />
             </div>
-            {handleMatch() ? false : <p className="texto-error">Passwords must match</p>}
+            {handleMatch() ? (
+              false
+            ) : (
+              <p className="texto-error">Las contraseñas deben coincidir</p>
+            )}
             <div className="btn-registrar">
               <button type="submit" className="">
                 Registrarse
