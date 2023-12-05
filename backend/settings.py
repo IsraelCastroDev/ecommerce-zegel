@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     "rest_framework",
     "rest_framework_simplejwt.token_blacklist",  # evitar reutilizacion de tokens
     "usuarios",
+    "productos",
 ]
 
 MIDDLEWARE = [
@@ -91,7 +92,7 @@ DATABASES = {
         "PORT": 5432,
         "NAME": "ecommercezegel",
         "USER": "postgres",
-        "PASSWORD": "1007"
+        "PASSWORD": "1007",
     }
 }
 
@@ -145,7 +146,7 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 AUTH_USER_MODEL = "usuarios.User"  # usar el modelo
 
 CORS_ALLOWED_ORIGINS = [
-   "http://localhost:5173",
+    "http://localhost:5173",
 ]
 
 CORS_ALLOWED_CREDENTIALS = True
