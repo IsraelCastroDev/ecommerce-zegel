@@ -23,7 +23,7 @@ const Login = () => {
       navigate("/");
     },
     onError: () => {
-      toast.error("Hubo un error");
+      toast.error("Contraseña o usuario incorrecto");
     },
   });
 

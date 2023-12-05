@@ -12,9 +12,12 @@ const Register = () => {
 
   const [email, setEmail] = useState("");
   const [name, setName] = useState("");
+  const [nameError, setNameError] = useState("");
   const [lastName, setLastName] = useState("");
+  const [lastNameError, setLastNameError] = useState("");
   const [password, setPassword] = useState("");
   const [rePassword, setRePassword] = useState("");
+  const [passwordError, setPasswordError] = useState("");
 
   const [emailError, setEmailError] = useState("");
 
@@ -29,14 +32,38 @@ const Register = () => {
     }
   }, [email]);
 
+  const nameRegex = /^[a-zA-Z]+$/;
+  useEffect(() => {
+     if (name && !nameRegex.test(name)) {
+      setNameError("El nombre solo puede contener letras");
+    } else {
+      setNameError("");
+    }
+  }, [name])
+
+  const lastNameRegex = /^[a-zA-Z]+$/;
+  useEffect(() => {
+    if (lastName && !lastNameRegex.test(lastName)) {
+     setLastNameError("El apellido solo puede contener letras");
+   } else {
+     setLastNameError("");
+   }
+ }, [lastName])
+
+  const passwordRegex = /^(?=.*\d).{5,}$/;
+  useEffect(() => {
+    if (password && !passwordRegex.test(password)) {
+      setPasswordError("La contraseña debe tener al menos 5 caracteres y contener al menos un número.");
+    } else {
+      setPasswordError("");
+    }
+  }, [password]);
+
   const registerMutation = useMutation({
     mutationFn: () => registerRequest(email, name, lastName, password),
     onSuccess: () => {
       toast.success("Registro exitoso, ahora puedes iniciar sesión!");
       navigate("/login");
-    },
-    onError: () => {
-      toast.error("Hubo un error");
     },
   });
 
@@ -111,6 +138,7 @@ const Register = () => {
                 placeholder="nombre"
               />
             </div>
+            {nameError && <p className="texto-error">{nameError}</p>}
             <div className="campo">
               <label htmlFor="last-name" className="">
                 Apellido
@@ -127,6 +155,7 @@ const Register = () => {
                 placeholder="apellido"
               />
             </div>
+            {lastNameError && <p className="texto-error">{lastNameError}</p>}
             <div className="campo">
               <label htmlFor="password" className="">
                 Contraseña
@@ -143,6 +172,7 @@ const Register = () => {
                 className=""
               />
             </div>
+            {passwordError && <p className="texto-error">{passwordError}</p>}
             <div className="campo">
               <label htmlFor="re-password" className="">
                 Confirmar Contraseña

@@ -26,7 +26,8 @@ class CustomUserManager(UserManager):
     def create_superuser(self, email=None, password=None, **extra_fields):
         extra_fields.setdefault("is_staff", True)  # is_staff = es admin
         return self._create_user(email, password, **extra_fields)
-    
+
+
 class User(AbstractBaseUser, PermissionsMixin):
     email = models.CharField(max_length=150, unique=True)
     name = models.CharField(max_length=150, null=True)
@@ -41,4 +42,4 @@ class User(AbstractBaseUser, PermissionsMixin):
     REQUIRED_FIELDS = []
 
     class Meta:
-        ordering = ["-date_joined"] # fecha de creacion de usuario
+        ordering = ["-date_joined"]  # fecha de creacion de usuario
