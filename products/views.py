@@ -1,5 +1,8 @@
 from rest_framework.response import Response
-from rest_framework.decorators import api_view
+from rest_framework.decorators import api_view, permission_classes
+from rest_framework.permissions import IsAdminUser, IsAuthenticated
+import logging
+from rest_framework.exceptions import APIException
 from rest_framework import status
 
 from .models import Product
@@ -18,6 +21,13 @@ def get_products(request):
 
 
 @api_view(["GET"])
+def get_product_admin(request, id):
+    produtcs = Product.objects.get(id=id)
+    serializer = ProductSerializer(produtcs, many=False)
+    return Response(serializer.data)
+
+
+@api_view(["GET"])
 def get_product(request, name):
     produtcs = Product.objects.get(name=name)
     serializer = ProductSerializer(produtcs, many=False)
@@ -25,19 +35,32 @@ def get_product(request, name):
 
 
 @api_view(["POST"])
+@permission_classes([IsAuthenticated, IsAdminUser])
 def create_product(request):
-    if request.user.is_staff:
-        serializer = ProductSerializer(data=request.data)
-        if serializer.is_valid():
-            serializer.save(user=request.user)
-            return Response(serializer.data, status=status.HTTP_201_CREATED)
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-    else:
-        return Response(status=status.HTTP_401_UNAUTHORIZED)
+    try:
+        if request.user.is_staff:
+            serializer = ProductSerializer(data=request.data)
+            if serializer.is_valid():
+                serializer.save(user=request.user)
+                return Response(serializer.data, status=status.HTTP_201_CREATED)
+            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+        else:
+            return Response(status=status.HTTP_401_UNAUTHORIZED)
+    except APIException as e:
+        logging.error(f"Error en la creación del producto: {e}")
+        return Response({"error": str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
 
 @api_view(["PUT"])
 def edit_product(request, pk):
+    # product = Product.objects.get(pk=pk)
+    # if request.user.is_staff:
+    #     serializer = ProductSerializer(product, data=request.data)
+    #     if serializer.is_valid():
+    #         serializer.save()
+    #         return Response(serializer.data)
+    #     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    # return Response(status=status.HTTP_401_UNAUTHORIZED)
     product = Product.objects.get(pk=pk)
     if request.user.is_staff:
         serializer = ProductSerializer(product, data=request.data)

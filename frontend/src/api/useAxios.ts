@@ -1,6 +1,7 @@
 import axios, { AxiosRequestHeaders } from "axios";
 import { useAuthStore } from "../store/auth";
 import jwt_decode from "jwt-decode";
+import { Token } from "../Interfaces";
 
 function logout() {
   useAuthStore.getState().logout()
@@ -24,10 +25,6 @@ authApi.interceptors.request.use(async (config) => {
     Authorization: `Bearer ${token}`,
   } as AxiosRequestHeaders;
 
-  type Token = {
-    exp: number;
-  };
-
   const tokenDecoded: Token = jwt_decode(token);
 
   const expiration = new Date(tokenDecoded.exp * 1000);
@@ -36,7 +33,7 @@ authApi.interceptors.request.use(async (config) => {
 
   if (expiration.getTime() - now.getTime() < fiveMinutes)
     try {
-      const res = await axi.post("/users/refresh/", {
+      const res = await axi.post("/usuarios/refresh/", {
         refresh: useAuthStore.getState().refresh,
       });
       useAuthStore.getState().setToken(res.data.access, res.data.refresh);
