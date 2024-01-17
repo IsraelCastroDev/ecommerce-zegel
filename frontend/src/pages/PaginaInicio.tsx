@@ -5,6 +5,8 @@ import { useInfiniteQuery } from "@tanstack/react-query";
 import { useEffect } from "react";
 import toast from "react-hot-toast";
 import { useInView } from "react-intersection-observer";
+import Loader from "../components/Loader";
+import { Slider } from "@material-tailwind/react";
 
 const PaginaInicio = () => {
   const { ref, inView } = useInView();
@@ -26,17 +28,17 @@ const PaginaInicio = () => {
     }
   }, [inView]);
 
-  if (isLoading) return <p>Cargando...</p>;
+  if (isLoading) return <Loader />;
   if (error instanceof Error) return <>{toast.error(error.message)}</>;
 
   return (
     <>
       {data?.pages.map((page: any) => (
         <>
-          <div className="flex justify-center">
+          <div className="flex justify-center items-center mt-10">
             <div
               key={page.meta.next}
-              className="p-8 grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 gap-16"
+              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2"
             >
               {page.data.map((product: Product) => (
                 <ProductCard key={product.id} product={product} />
@@ -54,7 +56,7 @@ const PaginaInicio = () => {
             data.pages.length > 0 &&
             hasNextPage && (
               <div ref={ref}>
-                {isLoading || isFetchingNextPage ? <p>Cargando...</p> : null}
+                {isLoading || isFetchingNextPage ? <Loader /> : null}
               </div>
             )}
         </>

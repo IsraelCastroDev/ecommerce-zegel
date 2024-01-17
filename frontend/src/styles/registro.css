@@ -6,7 +6,6 @@
   margin-top: 3rem;
   width: 100%;
   margin-bottom: 3rem;
-  padding-top: 5rem;
 }
 
 .contenedor-registro .anuncio span {
@@ -24,7 +23,6 @@
 .contenedor-formulario {
   display: flex;
   gap: 2rem;
-  margin-top: 3rem;
   width: 80%;
   justify-content: center;
 }
@@ -66,12 +64,12 @@
   margin-bottom: 1rem;
 }
 
-.contenedor-formulario .formulario .campo input {
+/* .contenedor-formulario .formulario .campo input {
   padding: .5rem 1rem;
   outline: none;
   border-radius: .2rem;
   border: 1px solid #333;
-}
+} */
 
 .contenedor-formulario .formulario .btn-registrar {
   display: flex;

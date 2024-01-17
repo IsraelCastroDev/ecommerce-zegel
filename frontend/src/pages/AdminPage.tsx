@@ -9,8 +9,8 @@ const AdminPage = () => {
 
   return (
     <section className="p-3 sm:p-5">
-      <div className="mx-auto max-w-screen-xl px-4 lg:px-12 bg-slate-600">
-        <div className="relative shadow-md sm:rounded-lg overflow-hidden bg-slate-600">
+      <div className="mx-auto max-w-screen-xl px-4 lg:px-12 bg-slate-600 rounded-md">
+        <div className="shadow-md sm:rounded-lg overflow-hidden bg-slate-600">
           <div className="flex flex-col md:flex-row items-center justify-between space-y-3 md:space-y-0 md:space-x-4 p-4">
             <div className="w-full md:w-1/2">
               <form className="flex items-center">
@@ -45,23 +45,23 @@ const AdminPage = () => {
               <button
                 onClick={() => setShow(0)}
                 type="button"
-                className="flex items-center justify-center text-white bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-primary-600 dark:hover:bg-primary-700 focus:outline-none dark:focus:ring-primary-800"
+                className="flex items-center justify-center text-white bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 rounded-lg px-4 py-2 border-slate-800 border-2 text-md uppercase font-bold"
               >
-                Products
+                Productos
               </button>
               <button
                 onClick={() => setShow(1)}
                 type="button"
-                className="flex items-center justify-center text-white bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-primary-600 dark:hover:bg-primary-700 focus:outline-none dark:focus:ring-primary-800"
+                className="flex items-center justify-center text-white bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 rounded-lg px-4 py-2 border-slate-800 border-2 text-md uppercase font-bold"
               >
-                Orders
+                Ordenes
               </button>
               <button
                 onClick={() => setShow(2)}
                 type="button"
-                className="flex items-center justify-center text-white bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-primary-600 dark:hover:bg-primary-700 focus:outline-none dark:focus:ring-primary-800"
+                className="flex items-center justify-center text-white bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 rounded-lg px-4 py-2 border-slate-800 border-2 text-md uppercase font-bold"
               >
-                Users
+                Usuarios
               </button>
             </div>
           </div>

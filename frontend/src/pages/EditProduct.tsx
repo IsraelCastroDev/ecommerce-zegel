@@ -62,7 +62,7 @@ const EditProduct = () => {
     event.preventDefault();
     editProdMutation.mutate({
       name: name,
-      stock: countInStock,
+      count_in_stock: countInStock,
       category: category,
       description: description,
       price: price,
@@ -124,8 +124,8 @@ const EditProduct = () => {
   if (editProdMutation.isLoading) return <p>Cragando...</p>;
 
   return (
-    <div className="fixed top-0 left-0 w-full h-full bg-black bg-opacity-50 ">
-      <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 h-[700px] w-[600px] rounded-md">
+    <div className="fixed inset-0 overflow-y-auto  w-full h-full bg-black bg-opacity-50 ">
+      <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 h-[400px] w-[600px] rounded-md">
         <div className="relative p-4 w-full max-w-2xl h-full md:h-auto">
           <div className="relative p-4 bg-white rounded-lg shadow dark:bg-gray-800 sm:p-5">
             <div className="flex justify-between items-center pb-4 mb-4 rounded-t border-b sm:mb-5 dark:border-gray-600">

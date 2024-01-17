@@ -9,17 +9,23 @@ import Register from "./pages/Register";
 import AdminPage from "./pages/AdminPage";
 import AgregarProducto from "./pages/AgregarProducto";
 import EditProduct from "./pages/EditProduct";
+import ProductPage from "./pages/ProductPage";
+import CarritoPage from "./pages/CarritoPage";
 
 function App() {
   return (
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Layout />}>
-          <Route index element={<PaginaInicio />} />
           <Route path="login" element={<Login />} />
           <Route path="registro" element={<Register />} />
+          
+          <Route index element={<PaginaInicio />} />
+          <Route path="product/:slug" element={<ProductPage />} />
 
-          <Route element={<RutaPrivada />}></Route>
+          <Route element={<RutaPrivada />}>
+            <Route path="carrito" element={<CarritoPage />} />
+          </Route>
 
           <Route path="admin" element={<AdminRutaPrivada />}>
             <Route index element={<AdminPage />} />

@@ -30,10 +30,13 @@ const Header = () => {
   }
 
   return (
-    <nav className="flex items-center w-full justify-between px-8 py-4 bg-slate-800 text-white fixed top-0">
+    <nav className="flex items-center w-full justify-between px-8 py-4 bg-slate-800 text-white sticky top-0 z-50">
       <div className="">
-        <Link to="/" className="font-bold">
-          logo
+        <Link
+          to="/"
+          className="bold text-[1.6rem] underline underline-offset-4 tracking-wide hover:text-slate-300 transition-colors duration-300 ease-linear"
+        >
+          Zegel Secret's
         </Link>
       </div>
       <div className="flex w-[500px] bg-slate-600 justify-between p-2 rounded-sm">
@@ -64,10 +67,13 @@ const Header = () => {
             </>
           )}
         </div>
-        <div className="carrito">
+        <div className="flex justify-center items-center gap-2">
           <Link to="carrito">
             <Carrito />
           </Link>
+          <span className="text-white font-extrabold text-[20px]">
+            {cart.length}
+          </span>
         </div>
       </div>
     </nav>

@@ -24,11 +24,15 @@ const SubMenuUser: React.FC<SubMenuUserProps> = ({
     <Menu as="div" className="relative inline-block text-left">
       <div>
         <Menu.Button className="flex items-center w-full justify-center gap-x-1.5 rounded-md px-3 py-2 text-sm font-semibold text-white shadow-sm">
-          <img
-            className="h-8 w-8 rounded-full"
-            src="https://www.pngmart.com/files/21/Account-User-PNG.png"
-            alt=""
-          />
+          {isAdmin && isAdmin ? (
+            <img
+              className="h-8 w-8 rounded-full"
+              src="https://www.pngmart.com/files/21/Account-User-PNG.png"
+              alt=""
+            />
+          ) : (
+            <FaUser size={30} />
+          )}
           Bienvenido
           <ChevronDownIcon
             className="-mr-1 h-5 w-5 text-gray-400"

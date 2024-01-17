@@ -1,5 +1,14 @@
-import { axi } from "./useAxios";
+import { authApi, axi } from "./useAxios";
 import { toast } from "react-hot-toast";
+
+export const delete_user = async (id: number) => {
+  await authApi.delete(`/usuarios/delete/${id}`);
+};
+
+export const get_users = async () => {
+  const response = await authApi.get("/usuarios/get/");
+  return response.data;
+};
 
 export const registerRequest = async (
   email: string,

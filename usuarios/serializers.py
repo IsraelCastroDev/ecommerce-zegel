@@ -4,6 +4,12 @@ from rest_framework_simplejwt.tokens import Token
 from .models import User
 
 
+class UserSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = User  # modelo a usar
+        fields = ["email", "name", "last_name", "id"]
+
+
 class RegisterUserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User  # modelo a usar

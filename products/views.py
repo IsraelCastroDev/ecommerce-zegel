@@ -4,6 +4,7 @@ from rest_framework.permissions import IsAdminUser, IsAuthenticated
 import logging
 from rest_framework.exceptions import APIException
 from rest_framework import status
+from django.utils.text import slugify
 
 from .models import Product
 from .serializers import ProductSerializer
@@ -41,7 +42,14 @@ def create_product(request):
         if request.user.is_staff:
             serializer = ProductSerializer(data=request.data)
             if serializer.is_valid():
-                serializer.save(user=request.user)
+                name = serializer.validated_data["name"]
+                category = serializer.validated_data["name"]
+                s = name + category
+                slug = slugify(s)
+                if serializer.Meta.model.objects.filter(slug=slug).exists():
+                    return Response(serializer.data, status=status.HTTP_400_BAD_REQUEST)
+                serializer.save(user=request.user, slug=slug)
+
                 return Response(serializer.data, status=status.HTTP_201_CREATED)
             return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
         else:
@@ -65,7 +73,13 @@ def edit_product(request, pk):
     if request.user.is_staff:
         serializer = ProductSerializer(product, data=request.data)
         if serializer.is_valid():
-            serializer.save()
+            name = serializer.validated_data["name"]
+            category = serializer.validated_data["name"]
+            s = name + category
+            slug = slugify(s)
+            if serializer.Meta.model.objects.filter(slug=slug).exists():
+                return Response(serializer.data, status.HTTP_400_BAD_REQUEST)
+            serializer.save(user=request.user, slug=slug)
             return Response(serializer.data)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
     return Response(status=status.HTTP_401_UNAUTHORIZED)
