@@ -3,7 +3,6 @@ import { Product } from "../Interfaces";
 
 import { useCartStore } from "../store/cart";
 
-import FlechaDerecha from "./FlechaDerecha";
 import StarPoints from "./StarPoints";
 
 interface Props {
@@ -18,7 +17,7 @@ const ProductCard = ({ product }: Props) => {
       <div className="max-w-sm border-gray-200 rounded-lg shadow bg-slate-800">
         <Link to={`/product/${product.name}`}>
           <img
-            className="rounded-t-lg"
+            className="rounded-t-lg block w-full"
             src={`${import.meta.env.VITE_BACKEND_URL}${product.image}`}
             alt=""
           />
@@ -46,26 +45,14 @@ const ProductCard = ({ product }: Props) => {
             {product.description}
           </p>
 
-          <div className="flex justify-between">
+          <div className="flex justify-center items-center mt-10">
             <button
               onClick={() => addToCart(product)}
-              className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+              className="inline-flex justify-center items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-800 rounded-lg hover:bg-blue-900 w-full"
             >
-              Agregar
-              <FlechaDerecha />
+              Agregar al carrito
+              {/* <FlechaDerecha /> */}
             </button>
-
-            <Link
-              to={`/product/${product.name}`}
-              className="inline-flex items-center
-        px-3 py-2 text-sm font-medium text-center text-white 
-        bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 
-        focus:outline-none focus:ring-blue-300 dark:bg-blue-600 
-        dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-            >
-              Ver producto
-              <FlechaDerecha />
-            </Link>
           </div>
         </div>
       </div>

@@ -68,7 +68,7 @@ const Header = () => {
           )}
         </div>
         <div className="flex justify-center items-center gap-2">
-          <Link to="carrito">
+          <Link to="carrito" className="">
             <Carrito />
           </Link>
           <span className="text-white font-extrabold text-[20px]">

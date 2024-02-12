@@ -11,6 +11,7 @@ import AgregarProducto from "./pages/AgregarProducto";
 import EditProduct from "./pages/EditProduct";
 import ProductPage from "./pages/ProductPage";
 import CarritoPage from "./pages/CarritoPage";
+import UserProfile from "./pages/UserProfile";
 
 function App() {
   return (
@@ -19,12 +20,13 @@ function App() {
         <Route path="/" element={<Layout />}>
           <Route path="login" element={<Login />} />
           <Route path="registro" element={<Register />} />
-          
+
           <Route index element={<PaginaInicio />} />
           <Route path="product/:slug" element={<ProductPage />} />
 
           <Route element={<RutaPrivada />}>
             <Route path="carrito" element={<CarritoPage />} />
+            <Route path="perfil" element={<UserProfile />} />
           </Route>
 
           <Route path="admin" element={<AdminRutaPrivada />}>

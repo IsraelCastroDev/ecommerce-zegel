@@ -6,7 +6,6 @@ import { useEffect } from "react";
 import toast from "react-hot-toast";
 import { useInView } from "react-intersection-observer";
 import Loader from "../components/Loader";
-import { Slider } from "@material-tailwind/react";
 
 const PaginaInicio = () => {
   const { ref, inView } = useInView();
@@ -38,7 +37,7 @@ const PaginaInicio = () => {
           <div className="flex justify-center items-center mt-10">
             <div
               key={page.meta.next}
-              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2"
+              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-2"
             >
               {page.data.map((product: Product) => (
                 <ProductCard key={product.id} product={product} />

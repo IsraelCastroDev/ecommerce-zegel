@@ -25,5 +25,7 @@ class MyTokenObtainPairSerializar(TokenObtainPairSerializer):
         # estos campos aparecen en el token
         token["email"] = user.email
         token["is_staff"] = user.is_staff
+        token["name"] = user.name
+        token["last_name"] = user.last_name
 
         return token

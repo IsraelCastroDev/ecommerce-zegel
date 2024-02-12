@@ -1,3 +1,4 @@
+import { User } from "../Interfaces";
 import { authApi, axi } from "./useAxios";
 import { toast } from "react-hot-toast";
 
@@ -5,9 +6,28 @@ export const delete_user = async (id: number) => {
   await authApi.delete(`/usuarios/delete/${id}`);
 };
 
+export const get_solo_user = async (id: number) => {
+  const response = await authApi.get(`/usuarios/get/solo/${id}/`);
+  return response.data;
+};
+
 export const get_users = async () => {
   const response = await authApi.get("/usuarios/get/");
   return response.data;
+};
+
+export const edit_user = async (data: User) => {
+  try {
+    const formData = new FormData();
+    formData.append("name", data.name);
+    formData.append("last_name", data.last_name);
+    formData.append("email", data.email);
+
+    await authApi.put(`/usuarios/edit/${data.email}`, formData);
+  } catch (error) {
+    console.error("Error al editar el producto:", error);
+    throw error;
+  }
 };
 
 export const registerRequest = async (

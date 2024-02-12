@@ -2,6 +2,8 @@ import { create } from "zustand";
 import { persist } from "zustand/middleware";
 import { Product } from "../Interfaces";
 
+import { toast } from "react-hot-toast";
+
 interface State {
   cart: Product[];
   totalPrice: number;
@@ -53,6 +55,8 @@ export const useCartStore = create(
             totalPrice: state.totalPrice + Number(product.price),
           }));
         }
+
+        toast.success("Producto agregado");
       },
 
       removeFromCart: (product: Product) => {
@@ -75,6 +79,7 @@ export const useCartStore = create(
             totalPrice: state.totalPrice - Number(product.price),
           }));
         }
+        toast.success("Producto eliminado");
       },
     }),
 

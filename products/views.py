@@ -74,7 +74,7 @@ def edit_product(request, pk):
         serializer = ProductSerializer(product, data=request.data)
         if serializer.is_valid():
             name = serializer.validated_data["name"]
-            category = serializer.validated_data["name"]
+            category = serializer.validated_data["category"]
             s = name + category
             slug = slugify(s)
             if serializer.Meta.model.objects.filter(slug=slug).exists():

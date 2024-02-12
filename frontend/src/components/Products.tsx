@@ -14,6 +14,7 @@ import {
   useInfiniteQuery,
 } from "@tanstack/react-query";
 import { Product } from "../Interfaces";
+import Loader from "./Loader";
 
 const Products = () => {
   const { ref, inView } = useInView();
@@ -29,7 +30,7 @@ const Products = () => {
     getNextPageParam: (page: any) => page.meta.next,
   });
 
-  useEffect(() => { 
+  useEffect(() => {
     if (inView) {
       fetchNextPage();
     }
@@ -50,7 +51,7 @@ const Products = () => {
 
   if (isLoading) return <p>Cargando...</p>;
   if (error instanceof Error) return <>{toast.error(error.message)}</>;
-  if (deleteProdMutation.isLoading) return <p>Cargando...</p>;
+  if (deleteProdMutation.isLoading) return <Loader />;
 
   return (
     <div className="overflow-x-auto">
@@ -75,7 +76,10 @@ const Products = () => {
             <th scope="col" className="px-4 py-3">
               Imagen
             </th>
-            <th scope="col" className="px-4 py-3 text-center flex items-center justify-between">
+            <th
+              scope="col"
+              className="px-4 py-3 text-center flex items-center justify-between"
+            >
               Acciones
               <Link to="agregar-producto">
                 <FaPlusCircle size={22} />
@@ -122,9 +126,10 @@ const Products = () => {
 
               {!isLoading && data?.pages.length === 0 && (
                 <p className="text-xl text-slate-800 dark:text-slate-200">
-                  No more results
+                  No se encontraron productos
                 </p>
               )}
+
               {!isLoading &&
                 data?.pages?.length !== undefined &&
                 data.pages.length > 0 &&

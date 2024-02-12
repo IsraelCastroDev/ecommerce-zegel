@@ -1,10 +1,20 @@
 import { Product } from "../Interfaces";
 import { authApi, axi } from "./useAxios";
 
+// Usando Axios para hacer la peticiones al backend
+
+/**
+ * @description funcion para eliminar productos
+ * @param id id del producto a elminar
+ */
 export const delete_product = async (id: number) => {
   await authApi.delete(`/products/delete/${id}/`);
 };
 
+/**
+ * @description funcion para guardar/enviar los productos a la bd
+ * @param data estructura del objeto Product
+ */
 export const post_product = async (data: Product) => {
   try {
     const formData = new FormData();
@@ -24,16 +34,30 @@ export const post_product = async (data: Product) => {
   }
 };
 
+/**
+ * @description funcion que obtiene un producto
+ * @param slug identificador de un producto en especifico
+ * @returns respuesta con el producto en especifico
+ */
 export const get_solo = async (slug: string) => {
   const response = await authApi.get(`/products/get/${slug}/`);
   return response.data;
 };
 
+/**
+ * @description funcion que obtiene un producto
+ * @param id identificador de un producto en especifico
+ * @returns rspuesta con el producto en especifico
+ */
 export const get_solo_prod = async (id: number) => {
   const response = await authApi.get(`/products/get/admin/${id}/`);
   return response.data;
 };
 
+/**
+ * @description funcion para editar los productos
+ * @param data estructura del objeto Product
+ */
 export const edit_product = async (data: Product) => {
   try {
     const formData = new FormData();
@@ -47,13 +71,17 @@ export const edit_product = async (data: Product) => {
     }
 
     await authApi.put(`/products/edit/${data.id}/`, formData);
-    // console.log("Server response:", Response);
   } catch (error) {
     console.error("Error al editar el producto:", error);
     throw error;
   }
 };
 
+/**
+ * @description funcion obtiene todos los productos
+ * @param param0 pagina numero 1
+ * @returns lista de productos guardados en la bd
+ */
 export const get_products = async ({ pageParam = 1 }) => {
   const response = await axi.get(`/products/?page=${pageParam}&pages=9`);
   return response.data;

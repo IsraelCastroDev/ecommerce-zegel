@@ -21,13 +21,17 @@ export interface Order {
 }
 
 export interface User {
-  id: number;
+  id?: number;
   email: string;
   name: string;
   last_name: string;
 }
 
 export interface Token {
+  id: number;
   exp: number;
   is_staff: boolean;
+  email: string;
+  name: string;
+  last_name: string;
 }

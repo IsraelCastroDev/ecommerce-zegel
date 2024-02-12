@@ -55,7 +55,7 @@ const SubMenuUser: React.FC<SubMenuUserProps> = ({
             <Menu.Item>
               {({ active }) => (
                 <Link
-                  to="#"
+                  to="perfil/"
                   className={classNames(
                     active ? "bg-slate-700" : "",
                     "flex items-center gap-1 px-4 py-2 text-sm text-white"

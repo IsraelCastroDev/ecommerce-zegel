@@ -53,7 +53,7 @@ const EditProduct = () => {
       navigate("/admin");
     },
     onError: () => {
-      toast.error("Ocurrió un error, intenta de nuevo");
+      toast.error("Ocurrió un error al editar producto, intenta de nuevo");
       navigate("/admin");
     },
   });
