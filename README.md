@@ -11,7 +11,7 @@
     python -m venv env
     env\Scripts\activate
 
-#####Instalar dependencias:
+##### Instalar dependencias:
 
 
     pip install -r requirements.txt
@@ -21,11 +21,11 @@
     mkdir dist
     mkdir dist/static
 
-#####Crear archivo .env con :
+##### Crear archivo .env con :
 
 
-    echo .env
-######Dentro de ese archivo crea una variable de entorno llamada "SECRET_KEY" y ponle como valor una clave random
+    New-Item -ItemType File -Name .env
+###### Dentro de ese archivo crea una variable de entorno llamada "SECRET_KEY" y ponle como valor una clave random
 
 ##### Crear usuario administrador:
 
@@ -36,7 +36,7 @@
 
     python manage.py runserver
 
-####Abrir una nueva terminal y ejecutar lo siguientes comandos en orden:
+#### Abrir una nueva terminal y ejecutar lo siguientes comandos en orden:
 
 
     cd frontend
