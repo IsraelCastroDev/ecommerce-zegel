@@ -140,7 +140,7 @@ const Reviews = ({ productId, reviews }: Props) => {
           </div>
         </div>
       )}
-      <section className="bg-white">
+      <section className="bg-transparent">
         <div className="py-8 px-4 mx-auto max-w-screen-xl text-center lg:py-16 lg:px-6">
           <div className="mx-auto max-w-screen-sm">
             <h2 className="mb-4 text-4xl tracking-tight font-extrabold text-gray-900">
@@ -153,7 +153,7 @@ const Reviews = ({ productId, reviews }: Props) => {
               onClick={() => {
                 setShow(true);
               }}
-              className="inline-flex items-center mx-3 px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800"
+              className="inline-flex items-center mx-3 px-3 py-2 text-sm font-medium text-center text-white bg-slate-800 rounded-lg"
             >
               Escribir mi opinión
             </button>
@@ -164,7 +164,7 @@ const Reviews = ({ productId, reviews }: Props) => {
           reviews.map((r: any) => {
             console.log(r);
             return (
-              <article className="container mx-auto">
+              <article className="w-full mx-4 sm:w-[700px] md:mx-auto bg-transparent mb-10">
                 <div className="flex items-center mb-4 space-x-4">
                   <FaUser size={30} />
                   <p className="text-sm font-semibold">{r.user}</p>
