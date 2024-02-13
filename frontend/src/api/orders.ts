@@ -5,6 +5,11 @@ export const delete_order = async (id: number) => {
   await authApi.delete(`/orders/delete/${id}/`);
 };
 
+export const get_solo_order = async (id: number) => {
+  const response = await authApi.get(`orders/order/${id}/`);
+  return response.data;
+};
+
 export const create_order = async (data: Order) => {
   await authApi.post("orders/create/", data);
 };

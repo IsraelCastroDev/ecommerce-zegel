@@ -52,20 +52,22 @@ const SubMenuUser: React.FC<SubMenuUserProps> = ({
       >
         <Menu.Items className="absolute right-[-48px] z-[1000] mt-[19px] w-56 origin-top-right rounded-md bg-slate-800 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
           <div className="py-1">
-            <Menu.Item>
-              {({ active }) => (
-                <Link
-                  to="perfil/"
-                  className={classNames(
-                    active ? "bg-slate-700" : "",
-                    "flex items-center gap-1 px-4 py-2 text-sm text-white"
-                  )}
-                >
-                  <FaUser size={30} />
-                  Mi Cuenta
-                </Link>
-              )}
-            </Menu.Item>
+            {!isAdmin && (
+              <Menu.Item>
+                {({ active }) => (
+                  <Link
+                    to="perfil/"
+                    className={classNames(
+                      active ? "bg-slate-700" : "",
+                      "flex items-center gap-1 px-4 py-2 text-sm text-white"
+                    )}
+                  >
+                    <FaUser size={30} />
+                    Mi Cuenta
+                  </Link>
+                )}
+              </Menu.Item>
+            )}
             {isAdmin && isAdmin && (
               <Menu.Item>
                 {({ active }) => (

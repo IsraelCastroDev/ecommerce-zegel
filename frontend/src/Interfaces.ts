@@ -28,7 +28,7 @@ export interface User {
 }
 
 export interface Token {
-  id: number;
+  user_id: number;
   exp: number;
   is_staff: boolean;
   email: string;

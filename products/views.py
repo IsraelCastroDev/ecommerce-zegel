@@ -1,13 +1,16 @@
 from rest_framework.response import Response
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.permissions import IsAdminUser, IsAuthenticated
+
+from .perimissions import IsOwnerOrReadOnly
+
 import logging
 from rest_framework.exceptions import APIException
-from rest_framework import status
+from rest_framework import status, generics
 from django.utils.text import slugify
 
-from .models import Product
-from .serializers import ProductSerializer
+from .models import Product, Reviews
+from .serializers import ProductSerializer, ReviewSerializer
 
 from backend.pagination import CustomPagination
 
@@ -22,16 +25,16 @@ def get_products(request):
 
 
 @api_view(["GET"])
-def get_product_admin(request, id):
-    produtcs = Product.objects.get(id=id)
+def get_product(request, name):
+    produtcs = Product.objects.get(name=name)
     serializer = ProductSerializer(produtcs, many=False)
     return Response(serializer.data)
 
 
 @api_view(["GET"])
-def get_product(request, name):
-    produtcs = Product.objects.get(name=name)
-    serializer = ProductSerializer(produtcs, many=False)
+def get_product_admin(request, id):
+    products = Product.objects.get(id=id)
+    serializer = ProductSerializer(products, many=False)
     return Response(serializer.data)
 
 
@@ -61,14 +64,6 @@ def create_product(request):
 
 @api_view(["PUT"])
 def edit_product(request, pk):
-    # product = Product.objects.get(pk=pk)
-    # if request.user.is_staff:
-    #     serializer = ProductSerializer(product, data=request.data)
-    #     if serializer.is_valid():
-    #         serializer.save()
-    #         return Response(serializer.data)
-    #     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-    # return Response(status=status.HTTP_401_UNAUTHORIZED)
     product = Product.objects.get(pk=pk)
     if request.user.is_staff:
         serializer = ProductSerializer(product, data=request.data)
@@ -92,3 +87,15 @@ def delete_product(request, pk):
         product.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
     return Response(status=status.HTTP_401_UNAUTHORIZED)
+
+
+@api_view(["POST"])
+@permission_classes([IsAuthenticated])
+def create_review(request, pk):
+    serializer = ReviewSerializer(data=request.data)
+    product = Product.objects.get(pk=pk)
+    if serializer.is_valid():
+        serializer.save(user=request.user, product=product)
+        return Response(serializer.data, status=status.HTTP_201_CREATED)
+    else:
+        return Response(serializer.data, status=status.HTTP_400_BAD_REQUEST)

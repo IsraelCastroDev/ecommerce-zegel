@@ -4,6 +4,7 @@ import { get_solo } from "../api/Products";
 import { useParams } from "react-router-dom";
 import { toast } from "react-hot-toast";
 import FlechaDerecha from "../components/FlechaDerecha";
+import Reviews from "../components/Reviews/Reviews";
 
 const ProductPage = () => {
   const { slug } = useParams();
@@ -17,7 +18,7 @@ const ProductPage = () => {
   if (isLoading) return <Loader />;
 
   return (
-    <div className="">
+    <section className="">
       <div className="gap-16 items-center py-8 px-4 mx-auto max-w-screen-xl lg:grid lg:grid-cols-2 lg:py-16 lg:px-6">
         <div className="font-light sm:text-lg">
           <h2 className="mb-4 text-4xl tracking-tight font-extrabold text-slate-800">
@@ -40,7 +41,9 @@ const ProductPage = () => {
           alt="office content 1"
         />
       </div>
-    </div>
+
+      <Reviews productId={data.id} reviews={data.reviews} />
+    </section>
   );
 };
 

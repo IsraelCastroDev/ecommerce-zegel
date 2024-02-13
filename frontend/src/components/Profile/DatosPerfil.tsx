@@ -79,23 +79,6 @@ const Datos: React.FC<DatosProps> = ({
                 Email *
               </label>
             </div>
-
-            <div className="relative mt-5 border border-slate-800 rounded-[4px]">
-              <input
-                type="text"
-                name="phone"
-                id="phone"
-                value={"+51 "}
-                className="outline-none bg-transparent h-10 px-6"
-                required
-              />
-              <label
-                htmlFor="phone"
-                className="absolute text-sm top-[-12px] left-[15px] translate-y-[-50] pointer-events-none bg-slate-200 px-2"
-              >
-                Celular *
-              </label>
-            </div>
           </div>
 
           <div className="flex justify-center items-center mt-10">

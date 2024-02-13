@@ -41,18 +41,6 @@ const AsideProfile = (data: AsideProfileProps) => {
           className="flex items-center gap-2
           hover:bg-slate-500 hover:text-white pl-3 h-10 transition-colors duration-150 ease-in-out"
         >
-          <RiLockPasswordLine size={30} />
-          <button
-            onClick={() => data.handleOnclickSeccion(1)}
-            className="w-full h-full text-left font-semibold"
-          >
-            Cambiar contraseña
-          </button>
-        </div>
-        <div
-          className="flex items-center gap-2
-          hover:bg-slate-500 hover:text-white pl-3 h-10 transition-colors duration-150 ease-in-out"
-        >
           <MdOutlineShoppingCart size={30} />
           <button
             onClick={() => data.handleOnclickSeccion(2)}

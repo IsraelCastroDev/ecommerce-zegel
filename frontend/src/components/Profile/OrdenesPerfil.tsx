@@ -50,7 +50,7 @@ const OrdenesPerfil = ({ data }) => {
               </th>
               <td className="px-4 py-3">
                 <Link
-                  to={`/order/${order.id}/`}
+                  to={`/orders/order/${order.id}/`}
                   className="p-2 cursor-pointer font-semibold underline"
                 >
                   Ver detalles

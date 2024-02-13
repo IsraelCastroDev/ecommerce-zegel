@@ -86,3 +86,14 @@ export const get_products = async ({ pageParam = 1 }) => {
   const response = await axi.get(`/products/?page=${pageParam}&pages=9`);
   return response.data;
 };
+
+export const create_review = async (
+  description: string,
+  rating: number,
+  productId: number
+) => {
+  await authApi.post(`/products/review/${productId}/`, {
+    description,
+    rating,
+  });
+};

@@ -12,6 +12,7 @@ import EditProduct from "./pages/EditProduct";
 import ProductPage from "./pages/ProductPage";
 import CarritoPage from "./pages/CarritoPage";
 import UserProfile from "./pages/UserProfile";
+import Order from "./pages/Order";
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
           <Route element={<RutaPrivada />}>
             <Route path="carrito" element={<CarritoPage />} />
             <Route path="perfil" element={<UserProfile />} />
+            <Route path="orders/order/:id" element={<Order />} />
           </Route>
 
           <Route path="admin" element={<AdminRutaPrivada />}>

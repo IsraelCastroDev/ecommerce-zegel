@@ -9,14 +9,13 @@ import {
   useQuery,
   useQueryClient,
 } from "@tanstack/react-query";
-import { edit_user } from "../api/users";
+import { edit_user, get_solo_user } from "../api/users";
 import toast from "react-hot-toast";
 import Loader from "../components/Loader";
 
 import { my_orders } from "../api/orders";
 
 import DatosPerfil from "../components/Profile/DatosPerfil";
-import CambiarContrasena from "../components/Profile/CambiarContrasena";
 import OrdenesPerfil from "../components/Profile/OrdenesPerfil";
 import AsideProfile from "../components/Profile/AsideProfile";
 
@@ -28,23 +27,23 @@ const UserProfile = () => {
 
   const token: string = useAuthStore.getState().access;
   const tokenDecoded: Token = jwtDecode(token);
-  // const id = tokenDecoded.id;
+  const id = tokenDecoded.user_id;
 
   const email = tokenDecoded.email;
-  const name = tokenDecoded.name;
-  const last_name = tokenDecoded.last_name;
 
-  // const { data: user } = useQuery({
-  //   queryKey: ["usuarios", id],
-  //   queryFn: () => get_solo_user(id),
-  // });
+  const { data: user } = useQuery({
+    queryKey: ["usuarios", id],
+    queryFn: () => get_solo_user(id),
+  });
+
+  console.log(tokenDecoded);
 
   useEffect(() => {
-    if (token) {
-      setStateName(name);
-      setStateLast(last_name);
+    if (user) {
+      setStateName(user.name);
+      setStateLast(user.last_name);
     }
-  }, [token]);
+  }, [user]);
 
   const queryClient = useQueryClient();
 
@@ -64,7 +63,7 @@ const UserProfile = () => {
     queryFn: my_orders,
   });
 
-  console.log(data);
+  console.log(data, "data");
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -102,7 +101,6 @@ const UserProfile = () => {
             email={email}
           />
         )}
-        {seccion === 1 && <CambiarContrasena />}
         {seccion === 2 && <OrdenesPerfil data={data} />}
       </section>
     </section>
