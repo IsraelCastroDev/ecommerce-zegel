@@ -12,9 +12,9 @@
     env\Scripts\activate
 
 #####Instalar dependencias:
-```shell
-pip install -r requirements.txt
-```
+
+
+    pip install -r requirements.txt
 ##### Crear carpeta dist:
 
 
@@ -25,7 +25,7 @@ pip install -r requirements.txt
 
 
     echo .env
-	//dentro de ese archivo crea una variable de entorno llamada "SECRET_KEY" y ponle como valor una clave random
+######Dentro de ese archivo crea una variable de entorno llamada "SECRET_KEY" y ponle como valor una clave random
 
 ##### Crear usuario administrador:
 
