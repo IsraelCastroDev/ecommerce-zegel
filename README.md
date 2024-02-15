@@ -12,10 +12,11 @@
     env\Scripts\activate
 
 ##### Instalar dependencias:
+###### IMPORTANTE: En caso de error al ejecutar "pip install -r requirements.txt" actualiza tu versión de pip
 
 
     pip install -r requirements.txt
-###### IMPORTANTE: En caso de error al ejecutar "pip install -r requirements.txt" actualiza tu versión de pip
+
 ##### Crear carpeta dist:
 
 
