@@ -12,8 +12,7 @@
     env\Scripts\activate
 
 ##### Instalar dependencias:
-###### IMPORTANTE: En caso de error al ejecutar "pip install -r requirements.txt" actualiza tu versión de pip
-
+###### IMPORTANTE: En caso de error al ejecutar "pip install -r requirements.txt" actualiza tu versión de pip con el comando: "python -m pip install --upgrade pip"
 
     pip install -r requirements.txt
 
