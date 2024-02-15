@@ -6,6 +6,7 @@
 	
 
 ##### Crear entonerno virtual:
+###### NOTA: es importante siempre activar el entorno virtual
 
 
     python -m venv env
