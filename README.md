@@ -15,6 +15,7 @@
 
 
     pip install -r requirements.txt
+##### En caso de error actualizar su version de pip
 ##### Crear carpeta dist:
 
 
